@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Diretrizes Rigorosas de Acessibilidade (WCAG 2.1 AA / AAA)
+   ========================================================================== */
+
+:root {
+  --bg-primary: #f8fafc;
+  --bg-surface: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --brand-primary: #1d4ed8;
+  --brand-hover: #1e3a8a;
+  --focus-ring: #ea580c;
+  --border-color: #94a3b8;
+}
+
+/* Modo de Alto Contraste (WCAG AAA) */
+body.high-contrast {
+  --bg-primary: #000000 !important;
+  --bg-surface: #0a0a0a !important;
+  --text-primary: #ffffff !important;
+  --text-secondary: #fde047 !important;
+  --brand-primary: #facc15 !important;
+  --brand-hover: #eab308 !important;
+  --focus-ring: #00ffff !important;
+  --border-color: #ffffff !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.high-contrast .a11y-card,
+body.high-contrast header,
+body.high-contrast nav,
+body.high-contrast footer,
+body.high-contrast table,
+body.high-contrast dialog,
+body.high-contrast .modal-box {
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+body.high-contrast input,
+body.high-contrast select,
+body.high-contrast textarea {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #fde047 !important;
+}
+
+body.high-contrast .btn-primary {
+  background-color: #facc15 !important;
+  color: #000000 !important;
+  font-weight: 800 !important;
+  border: 2px solid #ffffff !important;
+}
+
+/* Utilitário para Leitores de Tela (NVDA, VoiceOver, JAWS) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:focus-within {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 9999;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1.25rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background-color: #1e3a8a;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  outline: 3px solid #facc15;
+}
+
+/* Indicador de Foco Visível e Inequívoco (WCAG 2.4.7 & 2.4.11) */
+*:focus-visible {
+  outline: 3px solid var(--focus-ring) !important;
+  outline-offset: 2px !important;
+}
+
+/* Respeito a preferência de movimento reduzido (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

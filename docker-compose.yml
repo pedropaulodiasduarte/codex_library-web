@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql-db  :
+    image: mysql:8.0
+    container_name: codex-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: codexcb
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - codex-net
+
+  app:
+    # o . indica que o docker tem que chamar o Dockerfile localizado na pasta atual para construir a imagem.
+    build: .
+    container_name: codex-app
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      # Garante que a aplicação só vai subir depois que o container do MySQL estiver rodando. A aplicação depende do banco de dados está em execução.
+      - mysql-db
+    networks:
+      - codex-net
+
+volumes:
+  mysql_data:
+
+networks:
+  codex-net:
+    driver: bridge

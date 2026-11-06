@@ -1,0 +1,14 @@
+# Dependências e Ferramentas (Instaladas pelo npm install)
+node_modules/
+.node/
+
+# Pastas de Cache e Compilação (Geradas automaticamente ao rodar o projeto)
+.angular/
+dist/
+.ext/
+
+# Arquivos de log de erros (Se o npm falhar, ele cria esses arquivos)
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
